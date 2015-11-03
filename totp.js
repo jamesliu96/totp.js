@@ -59,8 +59,7 @@ var TOTP = {};
 
 TOTP.util = {};
 TOTP.util.now = function() { return new Date()*1; };
-TOTP.util.parseHex = function(hex) { return parseInt(hex, 16); };
-TOTP.util.parseHexAt = function(hex, os) { return TOTP.util.parseHex(hex.substr(os * 2, 2)); };
+TOTP.util.h2b = function(x) { var b = []; for(var c = 0, C = x.length; c < C; c += 2) b.push(parseInt(x.substr(c, 2), 16)); return b; };
 
 TOTP.DIGITS_POWER
 //  0  1   2    3     4      5       6        7         8
@@ -87,14 +86,14 @@ TOTP.totp = function(seed, time, digits, crypto) {
             hmac_sha = CryptoJS.HmacSHA1;
     }
 
-    var hash = hmac_sha(msg, seed).toString();
+    var h = TOTP.util.h2b(hmac_sha(msg, seed).toString());
 
-    var os = hash[hash.length - 1] & 0xf;
+    var os = h[h.length - 1] & 0xf;
 
-    var bin = ((TOTP.util.parseHexAt(hash, os + 0) & 0x7f) << 24) |
-              ((TOTP.util.parseHexAt(hash, os + 1) & 0xff) << 16) |
-              ((TOTP.util.parseHexAt(hash, os + 2) & 0xff) <<  8) |
-              ((TOTP.util.parseHexAt(hash, os + 3) & 0xff) <<  0) ;
+    var bin = (h[os]     & 0x7f) << 24 |
+              (h[os + 1] & 0xff) << 16 |
+              (h[os + 2] & 0xff) << 8 |
+              (h[os + 3] & 0xff);
 
     var otp = bin % TOTP.DIGITS_POWER[digits];
 

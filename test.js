@@ -7,5 +7,4 @@ r = TOTP.totp("testkeyhellofoobar", TOTP.util.now(), 6, "sha256");
 console.log("sha256(testkeyhellofoobar) = " + r);
 r = TOTP.totp("testkeyhellofoobar", TOTP.util.now(), 6, "sha512");
 console.log("sha512(testkeyhellofoobar) = " + r);
-console.log("parseHex(2a)=" + TOTP.util.parseHex("2a"));
-console.log("parseHexAt(9b7d2aaa9f,2)=" + TOTP.util.parseHexAt("9b7d2aaa9f", 2));
+console.log("h2b(9b7d2aaa9f)            = [" + TOTP.util.h2b("9b7d2aaa9f") + "]");
