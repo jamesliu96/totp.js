@@ -1,0 +1,28 @@
+{
+  "name": "totp",
+  "description": "RFC6238 implemented in ECMAScript",
+  "main": "totp.js",
+  "authors": [
+    "James Liu"
+  ],
+  "license": "GPL-3.0",
+  "keywords": [
+    "totp",
+    "rfc6238",
+    "otp",
+    "hotp"
+  ],
+  "homepage": "https://github.com/jamesliu96/totp.js",
+  "moduleType": [
+    "amd",
+    "globals",
+    "node"
+  ],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

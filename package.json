@@ -1,0 +1,25 @@
+{
+  "name": "totp",
+  "version": "1.0.0",
+  "description": "RFC6238 implemented in ECMAScript",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jamesliu96/totp.js.git"
+  },
+  "keywords": [
+    "totp",
+    "rfc6238",
+    "otp",
+    "hotp"
+  ],
+  "author": "James Liu",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/jamesliu96/totp.js/issues"
+  },
+  "homepage": "https://github.com/jamesliu96/totp.js#readme"
+}
